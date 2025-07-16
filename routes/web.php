@@ -173,4 +173,11 @@ use Illuminate\Support\Facades\Route;
     })->name('logout');
 
 
+Route::get('/debug-session', function () {
+    return [
+        'session_id' => session()->getId(),
+        'csrf_token' => csrf_token(),
+        'session_data' => session()->all(),
+    ];
+});
 
