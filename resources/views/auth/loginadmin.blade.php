@@ -66,7 +66,7 @@
                   </div>
                   <div class="card-body">
                     <form action="/proseslogin" method="POST" role="form" class="text-start">
-                        <input type="hidden" name="_token" value="{{ csrf_token }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                        // @csrf
                         <label class="form-label">Login Sebagai</label>
                         <div class="input-group input-group-outline my-3">
