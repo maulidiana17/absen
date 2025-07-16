@@ -51,7 +51,7 @@ use Illuminate\Support\Facades\Route;
 
 //Middleware untuk login admin, guru dan siswa
     Route::middleware(['guest'])->group(function () {
-        Route::get('/panel', function () {
+        Route::get('/', function () {
             return view('auth.loginadmin');
         })->name('loginadmin');
 
@@ -169,7 +169,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::post('/logout', function () {
         Auth::guard('web')->logout();
-        return redirect('/panel');
+        return redirect('/');
     })->name('logout');
 
 
