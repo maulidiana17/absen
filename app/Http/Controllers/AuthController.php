@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
 
     public function proseslogin(Request $request)
     {
-
+ Log::info('🔥 Data login masuk:', $request->all());
         $request->validate([
             'login_sebagai' => 'required',
             'password' => 'required'
@@ -21,7 +22,7 @@ class AuthController extends Controller
             $request->validate([
                 'email' => 'required|email',
             ]);
-
+  Log::info('🧑 Login sebagai:', ['role' => $request->login_sebagai]);
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
                 $user = Auth::user();
 
