@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('qr_validasi', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_qr');
-            $table->date('tanggal')->unique();
+        Schema::create('waktu', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('hari');
+            $table->unsignedTinyInteger('jam_ke');
+            $table->string('jam_mulai');
+            $table->string('jam_selesai');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('qr_validasi');
+        Schema::dropIfExists('waktu');
     }
 };

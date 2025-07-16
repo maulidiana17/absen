@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('waktu', function (Blueprint $table) {
-            $table->id();
-            $table->string('hari');// Senin, Selasa, dst
-            $table->unsignedTinyInteger('jam_ke');
-            $table->string('jam_mulai');
-            $table->string('jam_selesai');
-            $table->timestamps();
+        Schema::create('qr_validasi', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('kode_qr');
+            $table->date('tanggal');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('expired_at')->nullable();
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('waktu');
+        Schema::dropIfExists('qr_validasi');
     }
 };

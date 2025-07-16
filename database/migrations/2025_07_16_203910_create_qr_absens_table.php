@@ -12,10 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('qr_absens', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('nis');
             $table->string('nama');
             $table->string('kelas');
+            $table->string('mapel')->nullable();
+            $table->string('nip')->nullable();
             $table->timestamp('waktu')->nullable();
             $table->timestamps();
         });
