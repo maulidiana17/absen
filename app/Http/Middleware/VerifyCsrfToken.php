@@ -13,5 +13,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         '/prosesLogin' // Tambahkan ini untuk sementara waktu
+        //
     ];
 }
