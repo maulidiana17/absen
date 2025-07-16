@@ -65,46 +65,6 @@ class AuthController extends Controller
         }
     }
 
-// public function prosesloginadmin(Request $request)
-// {
-//     $request->validate([
-//         'email' => 'required|email',
-//         'password' => 'required'
-//     ]);
-
-//     if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-//         $user = Auth::user();
-
-//         if ($user->role === 'admin') {
-//             return redirect('/dashboardadmin');
-//         } elseif ($user->role === 'guru') {
-//             return redirect('/dashboardguru');
-//         } else {
-//             // Jika role tidak dikenali, logout dan tolak akses
-//             Auth::logout();
-//             return redirect('/')->with('warning', 'Role tidak diizinkan mengakses sistem.');
-//         }
-//     }
-
-//     return redirect('/')->with('warning', 'Email atau password yang Anda masukkan salah');
-// }
-
-// public function prosesLoginn(Request $request)
-// {
-//     if(Auth::guard('siswa')->attempt(['nis' => $request->nis, 'password' => $request->password])) {
-//         // Ambil data siswa yang berhasil login
-//         $siswa = Auth::guard('siswa')->user();
-
-//         // Simpan nama lengkap siswa di session
-//         session(['siswa_nama' => $siswa->nama_lengkap]);
-
-//         return redirect('/dashboard');
-//     } else {
-//         return redirect('/')->with(['warning' => 'NIS atau password yang anda masukkan salah']);
-//     }
-// }
-
-
 
 }
 
