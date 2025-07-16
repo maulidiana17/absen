@@ -14,23 +14,14 @@ class UsersSeeder extends Seeder
     {
         // Admin
         User::create([
-            'name' => 'admin',
-            'email' => 'dinii@gmail.com',
-            'password' => Hash::make('dini123'),
+            'name' => 'reina',
+            'email' => 'reina@gmail.com',
+            'password' => Hash::make('112233445566'),
             'role' => 'admin',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        // Guru 1
-        User::create([
-            'name' => 'Suluh Setya H., S.Pd',
-            'email' => 'suluhsetyah.@sekolah.sch.id',
-            'password' => Hash::make('password1'),
-            'role' => 'guru',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
 
 
     }
