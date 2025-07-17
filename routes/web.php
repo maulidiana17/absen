@@ -188,5 +188,5 @@ Route::get('/test-session', function () {
 });
 
 Route::get('/check-session', function () {
-    return session('test_key', 'Session tidak ditemukan');
+    return session('test_key', 'Session tidak ditemukann');
 });
