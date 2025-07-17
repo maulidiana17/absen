@@ -12,7 +12,7 @@ class AuthController extends Controller
 
     public function proseslogin(Request $request)
     {
-
+        dd($request->all);
         $request->validate([
             'login_sebagai' => 'required',
             'password' => 'required'

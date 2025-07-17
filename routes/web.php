@@ -172,21 +172,3 @@ use Illuminate\Support\Facades\Route;
         return redirect('/');
     })->name('logout');
 
-
-Route::get('/debug-session', function () {
-    return [
-        'session_id' => session()->getId(),
-        'csrf_token' => csrf_token(),
-        'session_data' => session()->all(),
-    ];
-});
-
-// di routes/web.php
-Route::get('/test-session', function () {
-    session(['test_key' => 'ini session test']);
-    return 'Session disimpan';
-});
-
-Route::get('/check-session', function () {
-    return session('test_key', 'Session tidak ditemukann');
-});
