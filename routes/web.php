@@ -50,7 +50,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 //Middleware untuk login admin, guru dan siswa
-    Route::middleware(['guest'])->group(function () {
+    Route::middleware(['web'])->group(function () {
         Route::get('/', function () {
             return view('auth.loginadmin');
         })->name('loginadmin');
