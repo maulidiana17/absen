@@ -70,11 +70,13 @@
                           @csrf
                         <label class="form-label">Login Sebagai</label>
                         <div class="input-group input-group-outline my-3">
-                            <select name="login_sebagai" class="form-control" required>
+                           <select name="login_sebagai" class="form-control" required>
                                 <option value="">Pilih</option>
-                                <option value="admin_guru">Admin / Guru</option>
+                                <option value="admin">Admin</option>
+                                <option value="guru">Guru</option>
                                 <option value="siswa">Siswa</option>
                             </select>
+
                         </div>
 
                         <!-- Input Email untuk Admin/Guru -->
@@ -148,52 +150,36 @@
     const logoImg = document.getElementById('logoImg');
     const welcomeText = document.getElementById('welcomeText');
 
-    loginRole.addEventListener('change', function () {
-        const allLabels = document.querySelectorAll('label');
+   loginRole.addEventListener('change', function () {
+    const role = this.value;
+    const allLabels = document.querySelectorAll('label');
 
-        if (this.value === 'siswa') {
-            emailField.classList.add('d-none');
-            nisField.classList.remove('d-none');
+    if (role === 'siswa') {
+        emailField.classList.add('d-none');
+        nisField.classList.remove('d-none');
 
-            //loginCard.style.backgroundColor = '#8B0000';
-            //loginCard.style.color = 'white';
+        logoImg.src = logoImg.dataset.siswaImg;
+        welcomeText.innerHTML = `Selamat Datang<div class="col">Siswa, silahkan login!</div>`;
+    } else if (role === 'admin' || role === 'guru') {
+        emailField.classList.remove('d-none');
+        nisField.classList.add('d-none');
 
-            //allLabels.forEach(label => label.classList.add('text-white'));
-            //labelLoginRole?.classList.add('text-white');
+        logoImg.src = logoImg.dataset.defaultImg;
+        welcomeText.innerHTML = `Selamat Datang<div class="col">${role.charAt(0).toUpperCase() + role.slice(1)}, silahkan login!</div>`;
+    } else {
+        emailField.classList.add('d-none');
+        nisField.classList.add('d-none');
 
-            logoImg.src = logoImg.dataset.siswaImg;
-            welcomeText.innerHTML = `Selamat Datang<div class="col">Siswa, silahkan login!</div>`;
+        logoImg.src = logoImg.dataset.defaultImg;
+        welcomeText.innerHTML = `Selamat Datang<div class="col">Silahkan Login!</div>`;
+    }
 
-            welcomeText.classList.remove('animate__animated', 'animate__fadeIn');
-            void welcomeText.offsetWidth;
-            welcomeText.classList.add('animate__animated', 'animate__fadeIn');
+    // Reset animasi
+    welcomeText.classList.remove('animate__animated', 'animate__fadeIn');
+    void welcomeText.offsetWidth;
+    welcomeText.classList.add('animate__animated', 'animate__fadeIn');
+});
 
-        } else if (this.value === 'admin_guru') {
-            emailField.classList.remove('d-none');
-            nisField.classList.add('d-none');
-
-            loginCard.style.backgroundColor = '';
-            loginCard.style.color = '';
-
-            allLabels.forEach(label => label.classList.remove('text-white'));
-            labelLoginRole?.classList.remove('text-white');
-
-            logoImg.src = logoImg.dataset.defaultImg;
-            welcomeText.innerHTML = `Selamat Datang<div class="col">Silahkan Login!</div>`;
-        } else {
-            emailField.classList.add('d-none');
-            nisField.classList.add('d-none');
-
-            loginCard.style.backgroundColor = '';
-            loginCard.style.color = '';
-
-            allLabels.forEach(label => label.classList.remove('text-white'));
-            labelLoginRole?.classList.remove('text-white');
-
-            logoImg.src = logoImg.dataset.defaultImg;
-            welcomeText.innerHTML = `Selamat Datang<div class="col">Silahkan Login!</div>`;
-        }
-    });
 </script>
 
 
