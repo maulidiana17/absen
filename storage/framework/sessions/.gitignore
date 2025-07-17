@@ -1,5 +1,2 @@
 *
 !.gitignore
-/storage/*.key
-/storage/framework/sessions/*
-/bootstrap/cache/*
