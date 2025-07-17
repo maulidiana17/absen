@@ -12,7 +12,7 @@ class AuthController extends Controller
 
     public function proseslogin(Request $request)
     {
- Log::info('🔥 Data login masuk:', $request->all());
+
         $request->validate([
             'login_sebagai' => 'required',
             'password' => 'required'
@@ -22,13 +22,17 @@ class AuthController extends Controller
             $request->validate([
                 'email' => 'required|email',
             ]);
-  Log::info('🧑 Login sebagai:', ['role' => $request->login_sebagai]);
+
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
                 $user = Auth::user();
 
                 if ($user->role === 'admin') {
+                    Log::info('Session ID setelah login (admin): ' . session()->getId());
+
                     return redirect('/dashboardadmin');
                 } elseif ($user->role === 'guru') {
+                    Log::info('Session ID setelah login (guru): ' . session()->getId());
+
                     return redirect('/dashboardguru');
                 } else {
                     Auth::logout();
