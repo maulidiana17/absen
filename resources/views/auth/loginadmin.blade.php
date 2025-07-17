@@ -59,10 +59,7 @@
                         Selamat Datang
                         <div class="col">
                             Silahkan Login !
-                            <pre>
-                            session id: {{ session()->getId() }}
-                            token: {{ csrf_token() }}
-                            </pre>
+                           
                         </div>
                      </h4>
 
